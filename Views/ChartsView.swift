@@ -21,7 +21,7 @@ struct ChartsView: View {
                     Text("Exp. Comparison").tag(ChartMode.monthlyExpenseComparison)
                     Text("Inc. Comparison").tag(ChartMode.monthlyIncomeComparison)
                 }
-                .pickerStyle(.segmented)
+                .pickerStyle(.menu)
                 .onChange(of: vm.chartMode) { _, _ in vm.clearDrilldown() }
             }
 
