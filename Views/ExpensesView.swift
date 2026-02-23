@@ -41,6 +41,18 @@ struct ExpensesView: View {
                 }
             }
 
+            // ── Total ───────────────────────────────────────────────────────
+            Section {
+                HStack {
+                    Text("Total Expenses")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Text(vm.totalAmount, format: .currency(code: "INR"))
+                        .foregroundStyle(.green)
+                        .bold()
+                }
+            }
+
             // ── Expense rows ────────────────────────────────────────────────
             Section {
                 if vm.pagedExpenses.isEmpty {
@@ -78,17 +90,6 @@ struct ExpensesView: View {
                         Button("Next") { vm.nextPage() }
                             .disabled(vm.currentPage == vm.totalPages)
                     }
-                }
-            }
-
-            // ── Summary ─────────────────────────────────────────────────────
-            Section {
-                HStack {
-                    Text("Total Expenses")
-                    Spacer()
-                    Text(vm.totalAmount, format: .currency(code: "INR"))
-                        .foregroundStyle(.green)
-                        .bold()
                 }
             }
         }

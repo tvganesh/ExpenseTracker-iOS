@@ -41,6 +41,18 @@ struct IncomeView: View {
                 }
             }
 
+            // ── Total ───────────────────────────────────────────────────────
+            Section {
+                HStack {
+                    Text("Total Income")
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Text(vm.totalAmount, format: .currency(code: "INR"))
+                        .foregroundStyle(.blue)
+                        .bold()
+                }
+            }
+
             // ── Income rows ─────────────────────────────────────────────────
             Section {
                 if vm.pagedIncome.isEmpty {
@@ -78,17 +90,6 @@ struct IncomeView: View {
                         Button("Next") { vm.nextPage() }
                             .disabled(vm.currentPage == vm.totalPages)
                     }
-                }
-            }
-
-            // ── Summary ─────────────────────────────────────────────────────
-            Section {
-                HStack {
-                    Text("Total Income")
-                    Spacer()
-                    Text(vm.totalAmount, format: .currency(code: "INR"))
-                        .foregroundStyle(.blue)
-                        .bold()
                 }
             }
         }
